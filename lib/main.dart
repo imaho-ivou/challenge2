@@ -42,7 +42,7 @@ class _HistoireState extends State<Histoire> {
               child: Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Text(
-                  mainBrain.histoire[mainBrain.compteur].enoncer,
+                  mainBrain.getEnoncer(),
                   style: TextStyle(color: Colors.white, fontSize: 25),
                   textAlign: TextAlign.center,
                 ),
@@ -62,25 +62,15 @@ class _HistoireState extends State<Histoire> {
                 ),
                 onPressed: () {
                   setState(() {
-                    if (mainBrain.compteur == 0) {
-                      mainBrain.compteur = 1;
-                    } else if (mainBrain.compteur == 1) {
-                      mainBrain.compteur = 3;
-                    } else if (mainBrain.compteur == 2) {
-                      mainBrain.compteur = 4;
-                    } else if ((mainBrain.compteur == 5) ||
-                        (mainBrain.compteur == 4) ||
-                        (mainBrain.compteur == 3)) {
-                      mainBrain.compteur = 0;
-                    }
+                    mainBrain.nextChoix1();
                   });
                 },
-                child: Text(mainBrain.histoire[mainBrain.compteur].choix1),
+                child: Text(mainBrain.getChoix1()),
               ),
             ),
           ),
           Visibility(
-            visible: mainBrain.histoire[mainBrain.compteur].choix2 != '',
+            visible: mainBrain.getChoix2() != '',
             child: Expanded(
               child: Padding(
                 padding: EdgeInsets.all(15.0),
@@ -92,16 +82,10 @@ class _HistoireState extends State<Histoire> {
                   ),
                   onPressed: () {
                     setState(() {
-                      if (mainBrain.compteur == 0) {
-                        mainBrain.compteur = 2;
-                      } else if (mainBrain.compteur == 1) {
-                        mainBrain.compteur = 2;
-                      } else if (mainBrain.compteur == 2) {
-                        mainBrain.compteur = 5;
-                      }
+                      mainBrain.nextChoix2();
                     });
                   },
-                  child: Text(mainBrain.histoire[mainBrain.compteur].choix2),
+                  child: Text(mainBrain.getChoix2()),
                 ),
               ),
             ),

@@ -1,7 +1,7 @@
 import 'hist.dart';
 
 class MainBrain {
-  List<Hist> histoire = [
+  List<Hist> _histoire = [
     Hist(
         "Vous venez de crevez un pneu à St André. Vous n'avez pas de téléphone vous décidez de faire du stop. Une ford fiesta rouge s'arrête et le conducteur vous demande si vous voulez qu'il vous dépanne.",
         "Vous lui demandez s'il n'est pas un meurtrier avant !",
@@ -25,5 +25,39 @@ class MainBrain {
         "")
   ];
 
-  int compteur = 0;
+  String getEnoncer() {
+    return _histoire[_compteur].enoncer;
+  }
+
+  String getChoix1() {
+    return _histoire[_compteur].choix1;
+  }
+
+  String getChoix2() {
+    return _histoire[_compteur].choix2;
+  }
+
+  int _compteur = 0;
+
+  void nextChoix1() {
+    if (_compteur == 0) {
+      _compteur = 1;
+    } else if (_compteur == 1) {
+      _compteur = 3;
+    } else if (_compteur == 2) {
+      _compteur = 4;
+    } else if ((_compteur == 5) || (_compteur == 4) || (_compteur == 3)) {
+      _compteur = 0;
+    }
+  }
+
+  void nextChoix2() {
+    if (_compteur == 0) {
+      _compteur = 2;
+    } else if (_compteur == 1) {
+      _compteur = 2;
+    } else if (_compteur == 2) {
+      _compteur = 5;
+    }
+  }
 }
