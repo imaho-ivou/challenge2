@@ -1,5 +1,8 @@
+import 'package:challenge2/mainBrain.dart';
 import 'package:flutter/material.dart';
+import 'mainBrain.dart';
 
+MainBrain mainBrain = MainBrain();
 void main() {
   runApp(MyApp());
 }
@@ -13,20 +16,20 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.grey.shade900,
-        body: Hist(),
+        body: Histoire(),
       ),
     );
   }
 }
 
-class Hist extends StatefulWidget {
-  const Hist({Key? key}) : super(key: key);
+class Histoire extends StatefulWidget {
+  const Histoire({Key? key}) : super(key: key);
 
   @override
-  _HistState createState() => _HistState();
+  _HistoireState createState() => _HistoireState();
 }
 
-class _HistState extends State<Hist> {
+class _HistoireState extends State<Histoire> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,8 +42,7 @@ class _HistState extends State<Hist> {
               child: Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Text(
-                  "Vous venez de crevez un pneu à St André. Vous n'avez pas de téléphone vous décidez de faire du stop."
-                  "Une ford fiesta rouge s'arrête et le conducteur vous demande si vous voulez qu'il vous dépanne.",
+                  mainBrain.histoire[mainBrain.compteur].enoncer,
                   style: TextStyle(color: Colors.white, fontSize: 25),
                   textAlign: TextAlign.center,
                 ),
@@ -58,9 +60,18 @@ class _HistState extends State<Hist> {
                     fontSize: 20,
                   ),
                 ),
-                onPressed: () {},
-                child: const Text(
-                    "Vous lui remerciez et vous montez dans la voiture"),
+                onPressed: () {
+                  setState(() {
+                    if (mainBrain.compteur == 0) {
+                      mainBrain.compteur = 1;
+                    } else if (mainBrain.compteur == 1) {
+                      mainBrain.compteur = 3;
+                    } else if (mainBrain.compteur == 2) {
+                      mainBrain.compteur = 4;
+                    }
+                  });
+                },
+                child: Text(mainBrain.histoire[mainBrain.compteur].choix1),
               ),
             ),
           ),
@@ -73,9 +84,18 @@ class _HistState extends State<Hist> {
                   primary: Colors.white,
                   textStyle: const TextStyle(fontSize: 20),
                 ),
-                onPressed: () {},
-                child: const Text(
-                    "Vous lui demandez s'il n'est pas un meurtrier avant !"),
+                onPressed: () {
+                  setState(() {
+                    if (mainBrain.compteur == 0) {
+                      mainBrain.compteur = 2;
+                    } else if (mainBrain.compteur == 1) {
+                      mainBrain.compteur = 2;
+                    } else if (mainBrain.compteur == 2) {
+                      mainBrain.compteur = 5;
+                    }
+                  });
+                },
+                child: Text(mainBrain.histoire[mainBrain.compteur].choix2),
               ),
             ),
           ),
