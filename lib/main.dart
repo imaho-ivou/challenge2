@@ -75,27 +75,30 @@ class _HistoireState extends State<Histoire> {
               ),
             ),
           ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(15.0),
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.blue.shade400,
-                  primary: Colors.white,
-                  textStyle: const TextStyle(fontSize: 20),
+          Visibility(
+            visible: mainBrain.histoire[mainBrain.compteur].choix2 != '',
+            child: Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(15.0),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.blue.shade400,
+                    primary: Colors.white,
+                    textStyle: const TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      if (mainBrain.compteur == 0) {
+                        mainBrain.compteur = 2;
+                      } else if (mainBrain.compteur == 1) {
+                        mainBrain.compteur = 2;
+                      } else if (mainBrain.compteur == 2) {
+                        mainBrain.compteur = 5;
+                      }
+                    });
+                  },
+                  child: Text(mainBrain.histoire[mainBrain.compteur].choix2),
                 ),
-                onPressed: () {
-                  setState(() {
-                    if (mainBrain.compteur == 0) {
-                      mainBrain.compteur = 2;
-                    } else if (mainBrain.compteur == 1) {
-                      mainBrain.compteur = 2;
-                    } else if (mainBrain.compteur == 2) {
-                      mainBrain.compteur = 5;
-                    }
-                  });
-                },
-                child: Text(mainBrain.histoire[mainBrain.compteur].choix2),
               ),
             ),
           ),
