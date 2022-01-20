@@ -68,6 +68,10 @@ class _HistoireState extends State<Histoire> {
                       mainBrain.compteur = 3;
                     } else if (mainBrain.compteur == 2) {
                       mainBrain.compteur = 4;
+                    } else if ((mainBrain.compteur == 5) ||
+                        (mainBrain.compteur == 4) ||
+                        (mainBrain.compteur == 3)) {
+                      mainBrain.compteur = 0;
                     }
                   });
                 },
