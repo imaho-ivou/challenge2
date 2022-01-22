@@ -39,25 +39,25 @@ class MainBrain {
 
   int _compteur = 0;
 
-  void nextChoix1() {
-    if (_compteur == 0) {
-      _compteur = 1;
-    } else if (_compteur == 1) {
-      _compteur = 3;
-    } else if (_compteur == 2) {
-      _compteur = 4;
-    } else if ((_compteur == 5) || (_compteur == 4) || (_compteur == 3)) {
-      _compteur = 0;
-    }
-  }
-
-  void nextChoix2() {
-    if (_compteur == 0) {
-      _compteur = 2;
-    } else if (_compteur == 1) {
-      _compteur = 2;
-    } else if (_compteur == 2) {
-      _compteur = 5;
+  void nextChoix(bool bouton) {
+    if (bouton == true) {
+      if (_compteur == 0) {
+        _compteur = 1;
+      } else if (_compteur == 1) {
+        _compteur = 3;
+      } else if (_compteur == 2) {
+        _compteur = 4;
+      } else if ((_compteur == 5) || (_compteur == 4) || (_compteur == 3)) {
+        _compteur = 0;
+      }
+    } else {
+      if (_compteur == 0) {
+        _compteur = 2;
+      } else if (_compteur == 1) {
+        _compteur = 2;
+      } else if (_compteur == 2) {
+        _compteur = 5;
+      }
     }
   }
 }

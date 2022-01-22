@@ -62,7 +62,7 @@ class _HistoireState extends State<Histoire> {
                 ),
                 onPressed: () {
                   setState(() {
-                    mainBrain.nextChoix1();
+                    mainBrain.nextChoix(true);
                   });
                 },
                 child: Text(mainBrain.getChoix1()),
@@ -82,7 +82,7 @@ class _HistoireState extends State<Histoire> {
                   ),
                   onPressed: () {
                     setState(() {
-                      mainBrain.nextChoix2();
+                      mainBrain.nextChoix(false);
                     });
                   },
                   child: Text(mainBrain.getChoix2()),
