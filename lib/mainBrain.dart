@@ -51,9 +51,7 @@ class MainBrain {
         _compteur = 0;
       }
     } else {
-      if (_compteur == 0) {
-        _compteur = 2;
-      } else if (_compteur == 1) {
+      if ((_compteur == 0) || (_compteur == 1)) {
         _compteur = 2;
       } else if (_compteur == 2) {
         _compteur = 5;
